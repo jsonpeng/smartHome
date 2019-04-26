@@ -596,6 +596,6 @@ function dealFloatData($data,$limit = 2)
     else{
       $data = round($data,$limit);
     }
-    return $data;
+    return (float)$data;
 }
 
