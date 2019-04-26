@@ -90,6 +90,20 @@ class DevMeterRecord extends Model
     }
 
     /**
+     * 处理浮点数据
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
+    private static function dealFloatData($data)
+    {
+      foreach ($data as $key => $val) 
+      {
+        $data[$key] = round($val,2);
+      }
+      return $data;
+    }
+
+    /**
      * 获取单个电表的信息
      * @return [type] [description]
      */
@@ -99,6 +113,7 @@ class DevMeterRecord extends Model
       $needDealTimeArr = ['power_total_time','enable_state_time','overdraft_time','capacity_time','consume_amount_time'];
       $i = rand(1,4);
 
+      #总充电量 分别4个电表
       $power_total_arr = [
           1000.64,
           750.25,
@@ -106,12 +121,15 @@ class DevMeterRecord extends Model
           356.22
       ];
 
+      #当前4个电表的数值
       $consume_amount_arr = [
           100.64,
           50.25,
           28.26,
           56.22
       ];
+
+      $power_total_arr = self::dealFloatData($power_total_arr);
 
       if($index > 3)
       {
