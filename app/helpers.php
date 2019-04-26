@@ -590,12 +590,12 @@ function dealFloatData($data,$limit = 2)
     {
       foreach ($data as $key => $val) 
       {
-        $data[$key] = sprintf("%.2f", $val);
+        $data[$key] = (float)sprintf("%.2f", $val);
       }
     }
     else{
       $data = sprintf("%.2f", $data);
     }
-    return is_array($data) ? $data : $data;
+    return is_array($data) ? $data : (float)$data;
 }
 
