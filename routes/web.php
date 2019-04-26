@@ -12,8 +12,20 @@
 */
 
 Route::get('test',function(){
+		dd(time());
 		return app('common')->downloadImage('http://newnews.book.kaimusoft.xyz/uploads/logo.png');
 });
+
+
+
+Route::group(['prefix'=>'smart_data','namespace'=>'Smart'],function(){
+	//前端路由
+	Route::get('/', 'MainController@index');
+
+});
+
+
+
 
 
 
@@ -28,3 +40,6 @@ Route::group(['middleware'=>['web'],'namespace'=>'Front'],function(){
  */
 //刷新缓存
 Route::post('/clearCache','CommonApiController@clearCache');
+
+
+Route::resource('devElectricityMeters', 'DevElectricityMeterController');

@@ -116,3 +116,7 @@
 
 
 
+<li class="{{ Request::is('devElectricityMeters*') ? 'active' : '' }}">
+    <a href="{!! route('devElectricityMeters.index') !!}"><i class="fa fa-edit"></i><span>Dev Electricity Meters</span></a>
+</li>
+

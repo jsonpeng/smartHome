@@ -14,6 +14,7 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
       '/zcjy/menu_items',
       '/getRootSlug/*',
-	   '/clearCache'
+	   '/clearCache',
+     '/smart_data'
     ];
 }
