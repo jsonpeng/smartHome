@@ -590,12 +590,12 @@ function dealFloatData($data,$limit = 2)
     {
       foreach ($data as $key => $val) 
       {
-        $data[$key] = round($val,$limit);
+        $data[$key] = (float)round($val,$limit);
       }
     }
     else{
       $data = round($data,$limit);
     }
-    return (float)$data;
+    return is_array($data) ? $data : (float)$data;
 }
 
