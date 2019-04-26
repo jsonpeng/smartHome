@@ -90,20 +90,6 @@ class DevMeterRecord extends Model
     }
 
     /**
-     * 处理浮点数据
-     * @param  [type] $data [description]
-     * @return [type]       [description]
-     */
-    private static function dealFloatData($data)
-    {
-      foreach ($data as $key => $val) 
-      {
-        $data[$key] = round($val,2);
-      }
-      return $data;
-    }
-
-    /**
      * 获取单个电表的信息
      * @return [type] [description]
      */
@@ -129,8 +115,8 @@ class DevMeterRecord extends Model
           56.22
       ];
 
-      $power_total_arr = self::dealFloatData($power_total_arr);
-
+      $power_total_arr = dealFloatData($power_total_arr);
+      $consume_amount_arr = dealFloatData($consume_amount_arr);
       if($index > 3)
       {
         $index = 3;

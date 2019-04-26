@@ -578,3 +578,24 @@ function get_content_img($text){
     return $match_arr;
 }
 
+/**
+ * 处理浮点数 数组或者直接浮点数
+ * @param  [type]  $data  [description]
+ * @param  integer $limit [description]
+ * @return [type]         [description]
+ */
+function dealFloatData($data,$limit = 2)
+{
+    if(is_array($data))
+    {
+      foreach ($data as $key => $val) 
+      {
+        $data[$key] = round($val,$limit);
+      }
+    }
+    else{
+      $data = round($data,$limit);
+    }
+    return $data;
+}
+

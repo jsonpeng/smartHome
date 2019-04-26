@@ -78,7 +78,7 @@ class DevPurifierRecord extends Model
         #pm2.5
         $attribute['pm2_5'] = rand(100,125);
         #使用寿命
-        $attribute['age'] = 1.00;
+        $attribute['age'] = dealFloatData(4799.12);
         #ray
         $attribute['ray'] = rand(4,5);
         return $attribute;
