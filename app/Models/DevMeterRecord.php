@@ -44,7 +44,7 @@ class DevMeterRecord extends Model
           'enable_state_time' => '',// '合跳闸刷新时间',
           'overdraft' => 0,// '透支额度',
           'overdraft_time'=> '',// '透支额度刷新时间',
-          'capacity' => dealFloatData(8.36),// '额定功率',
+          'capacity' => 8.36,// '额定功率',
           'capacity_time' => '',// '额定功率刷新时间',
           'consume_amount' => '',// '当前电表电量',
           'consume_amount_time'=> '',// '当前电表电量刷新时间',
@@ -130,6 +130,7 @@ class DevMeterRecord extends Model
           }
           $attribute['power_total'] = $power_total_arr[$index];
           $attribute['consume_amount'] = $consume_amount_arr[$index];
+          $attribute['capacity'] = dealFloatData($attribute['capacity']);
       }
       return $attribute;
     }
