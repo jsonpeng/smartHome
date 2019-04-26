@@ -37,9 +37,9 @@ class DevEnvRecord extends Model
           'temp'=> '',// float NULL DEFAULT NULL COMMENT '温度',
           'hum'=> '',// float NULL DEFAULT NULL COMMENT '湿度',
           'dioxide'=> '',// float NULL DEFAULT NULL COMMENT 'CO2浓度',
-          'dioxide_level'=> '1',// smallint(6) UNSIGNED NOT NULL DEFAULT 1 COMMENT 'CO2浓度评级',
+          'dioxide_level'=> 1,// smallint(6) UNSIGNED NOT NULL DEFAULT 1 COMMENT 'CO2浓度评级',
           'tvoc'=> '',// float NULL DEFAULT NULL COMMENT 'TVOC浓度',
-          'tvoc_level'=> '1',// smallint(6) UNSIGNED NOT NULL DEFAULT 1 COMMENT 'TVOC浓度评级',
+          'tvoc_level'=> 1,// smallint(6) UNSIGNED NOT NULL DEFAULT 1 COMMENT 'TVOC浓度评级',
           'sensor_id'=> '',// bigint(20) NOT NULL COMMENT '传感器ID',
     ];
 
