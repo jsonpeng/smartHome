@@ -78,9 +78,13 @@ class DevMeterRecord extends Model
     public static function getMeter()
     {
         $data = [];
+        $index = 0;
         for ($i=8; $i <= 11 ; $i++) 
         { 
-         $data[] = self::getOne();
+           $attribute = self::getOne($index);
+           $attribute['meter_id'] = $i;
+           $data[] = $attribute;
+           $index++;
         }
         return $data;
     }
@@ -89,19 +93,39 @@ class DevMeterRecord extends Model
      * 获取单个电表的信息
      * @return [type] [description]
      */
-    public static function getOne()
+    public static function getOne($index = 0)
     {
       $attribute = self::$attribute;
       $needDealTimeArr = ['power_total_time','enable_state_time','overdraft_time','capacity_time','consume_amount_time'];
       $i = rand(1,4);
+
+      $power_total_arr = [
+          1000.64,
+          750.25,
+          508.26,
+          356.22
+      ];
+
+      $consume_amount_arr = [
+          100.64,
+          50.25,
+          28.26,
+          56.22
+      ];
+
+      if($index > 3)
+      {
+        $index = 3;
+      }
+
       foreach ($attribute as $key => $value) 
       {
           if(in_array($key, $needDealTimeArr))
           {
             $attribute[$key] = time()-rand(1,10)*$i;
           }
-          $attribute['power_total'] = 1001;
-          $attribute['consume_amount'] = 121;
+          $attribute['power_total'] = $power_total_arr[$index];
+          $attribute['consume_amount'] = $consume_amount_arr[$index];
       }
       return $attribute;
     }
