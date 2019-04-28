@@ -10,7 +10,7 @@ class MainController extends Controller
     //首页
     public function index(Request $request)
     { 
-      return view('front.index');
+      return view('admin.banners.create');
     }
 
     //优秀作家 good_writer
