@@ -25,7 +25,6 @@ class MainController extends Controller
 			'electric' 	   => $this->electricData(),
 			#空气净化器数据
 			'purifier'	   => $this->purifierData()
-
 		];
 		return zcjy_data($data);
 	}
