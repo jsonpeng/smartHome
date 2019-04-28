@@ -28,7 +28,6 @@
 
     function responsive_filemanager_callback(field_id){
         var url=jQuery('#'+field_id).val();
-        jQuery('#'+field_id).parent().find('img').attr('src', url);
-
+        window.open(url);
     }
 </script>
