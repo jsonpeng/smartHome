@@ -18,5 +18,5 @@
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('保存', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('banners.index') !!}" class="btn btn-default">取消</a>
+    <a href="" class="btn btn-default">取消</a>
 </div>

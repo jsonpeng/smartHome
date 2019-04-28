@@ -1,24 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <h1>
-            创建横幅
-        </h1>
-    </section>
-    <div class="content">
-        @include('adminlte-templates::common.errors')
-        <div class="box box-primary">
-
-            <div class="box-body">
-                <div class="row">
-                    {!! Form::open(['route' => 'banners.store']) !!}
-
-                        @include('admin.banners.fields', ['banner' => null])
-
-                    {!! Form::close() !!}
-                </div>
-            </div>
-        </div>
+        <div class="input-append">
+        {!! Form::text('image', null, ['class' => 'form-control', 'id' => 'image']) !!}
+        <a data-toggle="modal" href="javascript:;" data-target="#myModal" class="btn" type="button">选择图片</a>
+        <img src="" style="max-width: 100%; max-height: 150px; display: block;">
     </div>
+    @include('admin.partial.imagemodel')
 @endsection
