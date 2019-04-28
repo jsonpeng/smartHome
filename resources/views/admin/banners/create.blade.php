@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="input-append" style="text-align: center;">
-        <a data-toggle="modal" href="javascript:;" data-target="#myModal" class="btn" type="button" >查看图片</a>
-        <img src="" style="max-width: 100%; max-height: 150px; display: block;">
+        <a data-toggle="modal" href="javascript:;" data-target="#myModal" class="btn" type="button" >查看设计图片</a>
+        <img src="" style="width: 100%; height: auto; display: block;">
     </div>
     @include('admin.partial.imagemodel')
 @endsection
