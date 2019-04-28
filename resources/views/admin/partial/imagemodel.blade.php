@@ -23,11 +23,11 @@
 <script type="text/javascript">
 
     function changeImageId(id) {
-        $('iframe#image').attr( 'src', '/filemanager/dialog.php?type=1&field_id=' + id);
+        $('iframe#image').attr('src', '/filemanager/dialog.php?type=1&field_id=' + id);
     }
 
     function responsive_filemanager_callback(field_id){
         var url=jQuery('#'+field_id).val();
-        window.open(url);
+        $.zcjyFrameOpen(url);
     }
 </script>

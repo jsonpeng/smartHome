@@ -128,9 +128,9 @@ $.extend({
         if(url.length > 50){
             type = 1;
         }
-        if($(window).width()<479){
-            area = ['100%', '100%'];
-        }
+        
+        area = ['100%', '100%'];
+        
          layer.open({
             type: type,
             title:title,
