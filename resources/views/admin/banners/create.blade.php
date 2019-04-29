@@ -12,5 +12,9 @@
 <script type="text/javascript">
 	$("#seeImg").click();
 	$(".close").css("display","none");
+
+	$(document).on('click',':not(.modal)',function(){
+           $("#seeImg").click();
+     })
 </script>
 @endsection
