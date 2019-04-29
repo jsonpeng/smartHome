@@ -14,7 +14,7 @@
 	$(".close").css("display","none");
 
 	$(document).on('click',':not(.modal)',function(){
-           $("#seeImg").click();
+          location.reload();
      })
 </script>
 @endsection
