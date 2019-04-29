@@ -28,7 +28,7 @@
 
     function responsive_filemanager_callback(field_id){
         var url=jQuery('#'+field_id).val();
-         $('iframe#image').attr('src', '/filemanager/dialog.php?type=1&field_id=image');
+         // $('iframe#image').attr('src', '/filemanager/dialog.php?type=1&field_id=image');
         $.zcjyFrameOpen(url);
     }
 </script>

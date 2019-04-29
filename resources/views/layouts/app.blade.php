@@ -275,19 +275,18 @@
      * @param  {Function} callback [description]
      * @return {[type]}            [description]
      */
-    zcjyFrameOpen:function(url,title='操作信息框',area=['60%', '680px'],callback=null){
+    zcjyFrameOpen:function(url,title='查看详情图',area=['60%', '680px'],callback=null){
         var type =2;
         // if(url.length > 50){
         //     type = 1;
         // }
-        
-        area = ['100%', '100%'];
+        area = ['100%', '1080px'];
         
          layer.open({
             type: type,
             title:title,
             shadeClose: true,
-            shade: 0.8,
+            shade: 1.0,
             area: area,
             content: url, 
         });
