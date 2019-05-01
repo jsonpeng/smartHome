@@ -34,7 +34,7 @@
 
                     <table class="table table-responsive table-bordered table-hover" id="houseJoins-table">
                         <thead>
-                            <tr  class="芸来软件_table_thead">
+                            <tr  class="{!! getSettingValueByKeyCache("name") !!}_table_thead">
                      
                             <th>支持小屋</th>
                       

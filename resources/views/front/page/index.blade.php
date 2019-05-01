@@ -13,7 +13,7 @@
 				<div class="detail-title text-center reveal1">
 					<h4>{!! $page->name !!}</h4>
 					<p class="mt15 mb25">
-					{{-- 	<span>发布者 : 芸来软件</span> --}}
+					{{-- 	<span>发布者 : {!! getSettingValueByKeyCache("name") !!}</span> --}}
 						<span class="news-date">{!! time_parse($page->created_at)->format('Y/m/d') !!}</span>
 					</p>
 				</div>

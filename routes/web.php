@@ -12,6 +12,8 @@
 */
 
 Route::get('test',function(){
+		dd(app('common')->DevSceneRepo()->startMutiControlRequest(1));
+		dd(curl_post("https://api.ilifesmart.com/app/auth.RegisterUser",[]));
 		dd(time());
 		return app('common')->downloadImage('http://newnews.book.kaimusoft.xyz/uploads/logo.png');
 });
@@ -25,10 +27,6 @@ Route::group(['prefix'=>'smart_data','namespace'=>'Smart'],function(){
 });
 
 
-
-
-
-
 Route::group(['middleware'=>['web'],'namespace'=>'Front'],function(){
 	//前端路由
 	Route::get('/', 'MainController@index')->name('index');
@@ -39,7 +37,26 @@ Route::group(['middleware'=>['web'],'namespace'=>'Front'],function(){
  *后台
  */
 //刷新缓存
-Route::post('/clearCache','CommonApiController@clearCache');
+Route::post('/clearCache','AppBaseController@clearCache');
+
+Route::group(['prefix'=>'smart','namespace'=>"Smart"],function(){
+	//说明文档
+	Route::get('/doc', 'SettingController@settingDoc');
+	//后台首页
+	Route::get('/', 'SettingController@setting');
+	 //系统设置
+    Route::get('settings/setting', 'SettingController@setting')->name('settings.setting');
+    Route::post('settings/setting', 'SettingController@update')->name('settings.setting.update');
+	//灯泡管理
+	Route::resource('devLights', 'DevLightController');
+	//地区管理
+	Route::resource('regions', 'RegionController');
+	//场景管理
+	Route::resource('devScenes', 'DevSceneController');
+	//场景关联的控制命令管理
+	Route::resource('devCommands', 'DevCommandController');
+});
 
 
-Route::resource('devElectricityMeters', 'DevElectricityMeterController');
+
+

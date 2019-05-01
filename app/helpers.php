@@ -15,7 +15,28 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 
 include_once 'send-sms.php';
-
+//智能设备控制等
+include_once 'smart.php';
+/**
+ * 直接获取必须参数
+ * @param  [type]  $model        [description]
+ * @param  boolean $return_array [description]
+ * @return [type]                [description]
+ */
+function modelRequiredParam($model,$return_array=false){
+  if(method_exists($model,'model'))
+  {
+      $model = $model->model();
+  }
+  $requireds = $model::$rules;
+  $attr = [];
+  foreach ($requireds as $key => $value) 
+  {
+      array_push($attr,$key);
+  }
+  $attr = !$return_array ? implode(',',$attr) : $attr;
+ return $attr;
+}
 
 function trclass($key=null){
   $arr = ['success','danger','warning','info','error'];
@@ -597,5 +618,36 @@ function dealFloatData($data,$limit = 2)
       $data = sprintf("%.2f", $data);
     }
     return is_array($data) ? $data : $data;
+}
+
+//curl get
+function curl_get($url)
+{
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  $dom = curl_exec($ch);
+  curl_close($ch);
+  return $dom;
+}
+
+//curl post
+function curl_post($url, $post_data)
+{
+    //初始化
+    $curl = curl_init();
+    //设置抓取的url
+    curl_setopt($curl, CURLOPT_URL, $url);
+    //设置头文件的信息作为数据流输出
+    curl_setopt($curl, CURLOPT_HEADER, 1);
+   //设置获取的信息以文件流的形式返回，而不是直接输出。
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    //设置post方式提交
+    curl_setopt($curl, CURLOPT_POST, 1);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $post_data);
+    $result = json_decode(curl_exec($curl),1);
+    //关闭URL请求
+    curl_close($curl);
+    return $result;
 }
 

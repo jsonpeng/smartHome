@@ -2,12 +2,12 @@
 
 @section('css')
 <style type="text/css">
-	.芸来软件_mobile_reg_content{
+	.{!! getSettingValueByKeyCache("name") !!}_mobile_reg_content{
 		padding-top: 150px;
 		padding-bottom: 180px;
 		
 	}
-	.芸来软件_mobile_reg_code_button{
+	.{!! getSettingValueByKeyCache("name") !!}_mobile_reg_code_button{
 		    display: inline-block;
 		    border: 1px solid #ccc;
 		    color: black;
@@ -16,7 +16,7 @@
 		    width: 154px;
 		    padding: 18px;
 	}
-	.芸来软件_mobile_reg_button{
+	.{!! getSettingValueByKeyCache("name") !!}_mobile_reg_button{
 		font-size: 16px;
 		padding: 20px;
 		color: white;
@@ -26,11 +26,11 @@
 		text-align: center;
 	}
 
-	.芸来软件_mobile_reg_input{
+	.{!! getSettingValueByKeyCache("name") !!}_mobile_reg_input{
 		margin-left: 30%;
 	}
 
-	.芸来软件_mobile_reg_form_text{
+	.{!! getSettingValueByKeyCache("name") !!}_mobile_reg_form_text{
 		    width: 120px;
 		    position: absolute;
 		    left: 18px;
@@ -50,7 +50,7 @@
 
 @section('content')
 	<div class="container ">
-		<div class="芸来软件_mobile_reg_content ">
+		<div class="{!! getSettingValueByKeyCache("name") !!}_mobile_reg_content ">
 
 			<!--找回密码-->
 			<form id="find_pwd" class="text-center">
@@ -65,7 +65,7 @@
 
 				<div class="form-inline mt30">
 					<input name="code" class="form-control h60" value="" placeholder="请输入验证码" style="min-width: 300px;" />
-					<button type="button" class="芸来软件_mobile_reg_code_button 芸来软件_mobile_reg_btn">
+					<button type="button" class="{!! getSettingValueByKeyCache("name") !!}_mobile_reg_code_button {!! getSettingValueByKeyCache("name") !!}_mobile_reg_btn">
 						获取验证码
 					</button>
 				</div>
@@ -75,7 +75,7 @@
 					
 				</div>
 
-				<div class="芸来软件_mobile_reg_button mt30 next">
+				<div class="{!! getSettingValueByKeyCache("name") !!}_mobile_reg_button mt30 next">
 					修改并找回
 				</div>
 			</form>
@@ -97,7 +97,7 @@
 		$('input[name=value]').attr('placeholder',type);
 	});
 	//获取手机验证码
-	$('.芸来软件_mobile_reg_btn').click(function(){
+	$('.{!! getSettingValueByKeyCache("name") !!}_mobile_reg_btn').click(function(){
 			if($.empty($('input[name=value]').val())){
 				$.alert('请先输入号码','error');
 				return;

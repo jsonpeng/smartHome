@@ -3,15 +3,8 @@
 namespace App\Repositories;
 
 
-use App\Repositories\CityRepository;
-use App\Repositories\PostRepository;
-use App\Repositories\CategoryRepository;
-use App\Repositories\MessageRepository;
-use App\Repositories\CertsRepository;
-use App\Repositories\BannerRepository;
-use App\Repositories\NoticesRepository;
-use App\Repositories\HeZuoRepository;
-
+use App\Repositories\RegionRepository;
+use App\Repositories\DevSceneRepository;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 
@@ -35,67 +28,26 @@ use Request;
 */
 class CommonRepository 
 {
- 
-
-     private $cityRepository;
-     private $postRepository;
-     private $categoryRepository;
-     private $messageRepository;
-     private $certsRepository;
-     private $bannerRepository;
-     private $noticesRepository;
-     private $HeZuoRepository;
+     private $RegionRepository;
+     private $DevSceneRepository;
      public function __construct(
-        CityRepository $cityRepo,
-        PostRepository $postRepo,
-        CategoryRepository $categoryRepo,
-        MessageRepository $messageRepo,
-        CertsRepository $certsRepo,
-        BannerRepository $bannerRepo,
-        NoticesRepository $noticesRepo,
-        HeZuoRepository $HeZuoRepo
+        RegionRepository $RegionRepo,
+        DevSceneRepository $DevSceneRepo
     ){
-        $this->cityRepository = $cityRepo;
-        $this->postRepository = $postRepo;
-        $this->categoryRepository = $categoryRepo;
-        $this->messageRepository = $messageRepo;
-        $this->certsRepository = $certsRepo;
-        $this->bannerRepository = $bannerRepo;
-        $this->noticesRepository = $noticesRepo;
-        $this->HeZuoRepository = $HeZuoRepo;
+        $this->RegionRepository = $RegionRepo;
+        $this->DevSceneRepository = $DevSceneRepo;
      }
 
-     public function HeZuoRepo(){
-      return $this->HeZuoRepository;
+     public function DevSceneRepo()
+     {
+      return $this->DevSceneRepository;
      }
 
-     public function noticesRepo(){
-        return $this->noticesRepository;
+     public function RegionRepo()
+     {
+      return $this->RegionRepository;
      }
 
-     public function bannerRepo(){
-        return $this->bannerRepository;
-     }
-
-     public function certsRepo(){
-        return $this->certsRepository;
-     }
-
-     public function messageRepo(){
-        return $this->messageRepository;
-     }
-
-     public function categoryRepo(){
-        return $this->categoryRepository;
-     }
-
-     public function postRepo(){
-        return $this->postRepository;
-     }
-
-     public function cityRepo(){
-        return $this->cityRepository;
-     }
 
      public function autowrap($string,$fontsize=20, $angle=0, $width=760) {
           $fontface = public_path().'/fonts/XinH_CuJW.TTF';

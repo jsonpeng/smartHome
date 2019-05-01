@@ -11,9 +11,9 @@
             </div>
             <div class="pull-left info" style="color: black;">
                 @if (Auth::guest())
-                <p>芸来软件</p>
+                <p>{!! getSettingValueByKeyCache("name") !!}</p>
                 @else
-                    <p >芸来软件</p>
+                    <p >{!! getSettingValueByKeyCache("name") !!}</p>
                 @endif
                 <!-- Status -->
            <!--      <a href="#"><i class="fa fa-circle text-success"></i> 在线</a> -->

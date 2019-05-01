@@ -228,7 +228,7 @@
 
         $('input[name=name],input[name=mobile],input[name=password],input[name=code]').on('keypress',function(event){
             if (event.charCode === 13) {
-                $('.芸来软件_login_btn').trigger('click');
+                $('.{!! getSettingValueByKeyCache("name") !!}_login_btn').trigger('click');
             }
         });
         $('.wx-login').click(function(){

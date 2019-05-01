@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>芸来软件</title>
+    <title>{!! getSettingValueByKeyCache("name") !!}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -45,6 +45,9 @@
     .box.box-info,.nav-tabs-custom>.nav-tabs>li.active{
         border-top-color: green;
     }
+    .required{
+        color: orange;
+    }
     </style>
     @yield('css')
 </head>
@@ -61,14 +64,14 @@
         }
     </style>
 
-  @if (auth('admin')->check())
+
     <div class="wrapper">
         <!-- Main Header -->
         <header class="main-header">
 
             <!-- Logo -->
             <a href="#" class="logo">
-                <b>芸来软件后台管理系统</b>
+                <b>{!! getSettingValueByKeyCache("name") !!}后台管理系统</b>
             </a>
 
             <!-- Header Navbar -->
@@ -89,17 +92,17 @@
                                 <img src="{{ asset('logo/logo.png') }}"
                                      class="user-image" alt="User Image"/>
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                <span class="hidden-xs">{!! auth('admin')->user()->name !!}</span>
+                                <span class="hidden-xs">{!! optional(auth('admin')->user())->name !!}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
-                                    <div class="pull-left">
+                                   {{--  <div class="pull-left">
                                         <a href="{!! route('settings.edit_pwd') !!}" class="btn btn-default btn-flat">
                                             修改密码
                                         </a>
 
-                                    </div>
+                                    </div> --}}
                                     <div class="pull-right">
                                         <a href="{!! url('/zcjy/logout') !!}" class="btn btn-default btn-flat">
                                             退出
@@ -125,17 +128,13 @@
 
         <!-- Main Footer -->
         <footer class="main-footer" style="max-height: 100px;text-align: center">
-            <strong>Copyright 2018 <a href="/" target="_blank">芸来软件</a>.</strong> All rights reserved.
+            <strong>Copyright 2019 <a href="/" target="_blank">{!! getSettingValueByKeyCache("name") !!}</a>.</strong> All rights reserved.
         </footer>
 
     </div>
-@else
-    
 
-
-                    @yield('content')
    
-    @endif
+
 
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -396,7 +395,6 @@ $('input[name=price]').numberInputLimit(6);
     </script>
     <script src="{{ asset('vendor/layer/layer.js') }}"></script>
 
-    @yield('scripts')
     <script type="text/javascript">
     $('#add_post').click(function(){
        $.ajaxSetup({
@@ -555,6 +553,8 @@ $('input[name=price]').numberInputLimit(6);
     
     $('input[type=text]').numberInputLimit(191);
     </script>
+    @include('layouts.model_required')
+    @yield('scripts')
 </body>
 </html>
 

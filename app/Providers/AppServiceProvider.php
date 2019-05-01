@@ -37,8 +37,8 @@ class AppServiceProvider extends ServiceProvider
                 '*', 'App\Http\ViewComposers\AdminComposer'
         );
         //绑定setting
-       // $this->app->singleton('setting', 'App\Repositories\SettingRepository');
-       // $this->app->singleton('common', 'App\Repositories\CommonRepository');
+       $this->app->singleton('setting', 'App\Repositories\SettingRepository');
+       $this->app->singleton('common', 'App\Repositories\CommonRepository');
        // $this->app->singleton('banner', 'App\Repositories\BannerRepository');
        // $this->app->singleton('notice','App\Repositories\NoticesRepository');
         

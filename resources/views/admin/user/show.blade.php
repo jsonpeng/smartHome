@@ -69,7 +69,7 @@
 
             {{--       <li ><a href="#order_list" data-toggle="tab">订单</a></li>
                   <li ><a href="#hourse_list" data-toggle="tab">小屋</a></li>
-                  <li ><a href="#芸来软件_list" data-toggle="tab">芸来软件</a></li> --}}
+                  <li ><a href="#{!! getSettingValueByKeyCache("name") !!}_list" data-toggle="tab">{!! getSettingValueByKeyCache("name") !!}</a></li> --}}
                   <li class="active"><a href="#notice_list" data-toggle="tab">通知消息</a></li>
                   <li class=""><a href="#post_list" data-toggle="tab">发布的文章</a></li>
                   <li class=""><a href="#collect_list" data-toggle="tab">收藏的文章</a></li>
@@ -168,7 +168,7 @@
     
 
                       <div class="active tab-pane" id="notice_list">
-                            <table class="table table-responsive table-bordered table-hover" id="芸来软件s-table">
+                            <table class="table table-responsive table-bordered table-hover" id="{!! getSettingValueByKeyCache("name") !!}s-table">
                                         <thead>
                                             <tr  class="">
                                             <th>消息内容</th>
