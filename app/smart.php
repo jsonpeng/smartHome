@@ -6,6 +6,11 @@ class Smart{
     //java 多个控制接口
     public static $smartUrl = "http://localhost:8090/api/device/";
 
+    /**
+     * 多个设备控制请求
+     * @param  [type] $params [description]
+     * @return [type]         [description]
+     */
     public static function mutiControlRequest($params)
     {
         $params = ['args'=>$params];

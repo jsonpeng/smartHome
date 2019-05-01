@@ -27,11 +27,13 @@ Route::group(['prefix'=>'smart_data','namespace'=>'Smart'],function(){
 });
 
 
-Route::group(['middleware'=>['web'],'namespace'=>'Front'],function(){
-	//前端路由
-	Route::get('/', 'MainController@index')->name('index');
 
+//前端路由
+Route::get('/', function(){
+	return redirect('/smart');
 });
+
+
 
 /**
  *后台
@@ -55,7 +57,10 @@ Route::group(['prefix'=>'smart','namespace'=>"Smart"],function(){
 	Route::resource('devScenes', 'DevSceneController');
 	//场景关联的控制命令管理
 	Route::resource('devCommands', 'DevCommandController');
+	//传感器管理
+	Route::resource('devSensors', 'DevSensorController');
 });
+
 
 
 

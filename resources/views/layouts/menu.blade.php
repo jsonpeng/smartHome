@@ -22,6 +22,10 @@
     <a href="{!! route('devLights.index') !!}"><i class="fa fa-edit"></i><span>智能灯光设备</span></a>
 </li>
 
+<li class="{{ Request::is('smart/devSensors*') ? 'active' : '' }}">
+    <a href="{!! route('devSensors.index') !!}"><i class="fa fa-edit"></i><span>传感器设备</span></a>
+</li>
+
 <li class="header">联动设置</li>
 <li class="{{ Request::is('smart/devScenes*') ? 'active' : '' }}">
     <a href="{!! route('devScenes.index') !!}"><i class="fa fa-edit"></i><span>场景管理</span></a>
@@ -35,6 +39,8 @@
 <li class="">
     <a href="javascript:;" id="refresh"><i class="fa fa-refresh"></i><span>刷新缓存</span></a>
 </li>
+
+
 
 
 
