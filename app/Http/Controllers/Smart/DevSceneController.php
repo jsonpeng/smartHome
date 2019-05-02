@@ -31,7 +31,7 @@ class DevSceneController extends AppBaseController
     {
         $this->devSceneRepository->pushCriteria(new RequestCriteria($request));
 
-        session(['rediredUrl'=>$request->fullUrl()]);
+        session(['rediredUrlScene'=>$request->fullUrl()]);
 
         $devScenes = $this->devSceneRepository
         ->orderBy('created_at','asc')
@@ -63,7 +63,7 @@ class DevSceneController extends AppBaseController
      */
     public function store(CreateDevSceneRequest $request)
     {
-        $input = $request->all();
+        $input = app('common')->RegionRepo()->attachReginNameByInputId($request->all());
 
         $devScene = $this->devSceneRepository->create($input);
 
@@ -71,7 +71,7 @@ class DevSceneController extends AppBaseController
 
         $this->devSceneRepository->setSceneSwitch($input['enabled'],$devScene);
 
-        return redirect(session('rediredUrl'));
+        return redirect(session('rediredUrlScene'));
     }
 
     /**
@@ -135,8 +135,10 @@ class DevSceneController extends AppBaseController
             return redirect(route('devScenes.index'));
         }
 
-        $input = $request->all();
+        $input = app('common')->RegionRepo()->attachReginNameByInputId($request->all());
+
         $input['enabled'] = (int)$input['enabled'];
+        
         // dd($input);
         $devScene->update($input);
 
@@ -144,7 +146,7 @@ class DevSceneController extends AppBaseController
 
         Flash::success('场景更新成功.');
 
-        return redirect(session('rediredUrl'));
+        return redirect(session('rediredUrlScene'));
     }
 
     /**

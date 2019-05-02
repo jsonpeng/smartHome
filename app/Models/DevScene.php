@@ -29,7 +29,9 @@ class DevScene extends Model
         'name',
         'description',
         'enabled',
-        'region_id'
+        'region_id',
+        'image',
+        'region_name'
     ];
 
     /**

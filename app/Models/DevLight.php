@@ -51,13 +51,13 @@ class DevLight extends Model
         'bri',
         'agt',
         'agt_state',
-        'agt_state',
         'is_join',
         'join_at',
         'region_name',
         'support_rgb',
         'support_rgbw',
-        'support_dyn'
+        'support_dyn',
+        'image'
     ];
 
     public static $attribute = [
@@ -74,13 +74,13 @@ class DevLight extends Model
         'bri',
         'agt',
         'agt_state',
-        'agt_state',
         'is_join',
         'join_at',
         'region_name',
         'support_rgb',
         'support_rgbw',
-        'support_dyn'
+        'support_dyn',
+        'image'
     ];
 
     /**
@@ -136,7 +136,7 @@ class DevLight extends Model
     //接入状态 1已接入 0未接入
     public function getIsJoinStatusAttribute()
     {
-        return $this->is_join ? '已介入' : '未接入';
+        return $this->is_join ? '已接入' : '未接入';
     }
     
 }

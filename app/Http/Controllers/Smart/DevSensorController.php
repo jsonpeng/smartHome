@@ -43,7 +43,9 @@ class DevSensorController extends AppBaseController
      */
     public function create()
     {
-        return view('dev_sensors.create');
+        return view('dev_sensors.create')
+        ->with('Regions',app('common')->RegionRepo()->all())
+        ->with('model_required',modelRequiredParam($this->devSensorRepository));
     }
 
     /**
@@ -55,11 +57,11 @@ class DevSensorController extends AppBaseController
      */
     public function store(CreateDevSensorRequest $request)
     {
-        $input = $request->all();
+        $input = app('common')->RegionRepo()->attachReginNameByInputId($request->all());
 
         $devSensor = $this->devSensorRepository->create($input);
 
-        Flash::success('Dev Sensor saved successfully.');
+        Flash::success('添加传感器成功.');
 
         return redirect(route('devSensors.index'));
     }
@@ -101,7 +103,10 @@ class DevSensorController extends AppBaseController
             return redirect(route('devSensors.index'));
         }
 
-        return view('dev_sensors.edit')->with('devSensor', $devSensor);
+        return view('dev_sensors.edit')
+        ->with('devSensor', $devSensor)
+        ->with('Regions',app('common')->RegionRepo()->all())
+        ->with('model_required',modelRequiredParam($this->devSensorRepository));
     }
 
     /**
@@ -122,9 +127,11 @@ class DevSensorController extends AppBaseController
             return redirect(route('devSensors.index'));
         }
 
-        $devSensor = $this->devSensorRepository->update($request->all(), $id);
+        $input = app('common')->RegionRepo()->attachReginNameByInputId($request->all());
 
-        Flash::success('Dev Sensor updated successfully.');
+        $devSensor = $this->devSensorRepository->update($input, $id);
+
+        Flash::success('更新传感器成功.');
 
         return redirect(route('devSensors.index'));
     }
@@ -148,7 +155,7 @@ class DevSensorController extends AppBaseController
 
         $this->devSensorRepository->delete($id);
 
-        Flash::success('Dev Sensor deleted successfully.');
+        Flash::success('删除传感器成功.');
 
         return redirect(route('devSensors.index'));
     }

@@ -31,6 +31,8 @@ class DevCommandController extends AppBaseController
     {
         $this->devCommandRepository->pushCriteria(new RequestCriteria($request));
 
+        session(['rediredUrlCommand'=>$request->fullUrl()]);
+
         $devCommands = $this->devCommandRepository->model()::
         where("id",">",0);
 
@@ -186,6 +188,6 @@ class DevCommandController extends AppBaseController
 
         Flash::success('联动命令删除成功.');
 
-        return redirect(route('devCommands.index'));
+        return redirect(session('rediredUrlCommand'));
     }
 }

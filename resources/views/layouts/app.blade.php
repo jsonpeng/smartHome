@@ -48,6 +48,9 @@
     .required{
         color: orange;
     }
+    .layui-layer-shade{
+        background-color: transparent !important;
+    }
     </style>
     @yield('css')
 </head>
@@ -274,12 +277,12 @@
      * @param  {Function} callback [description]
      * @return {[type]}            [description]
      */
-    zcjyFrameOpen:function(url,title='查看详情图',area=['60%', '680px'],callback=null){
+    zcjyFrameOpen:function(url,title='智慧海淀',area=['60%', '680px'],callback=null){
         var type =2;
         // if(url.length > 50){
         //     type = 1;
         // }
-        area = ['100%', '1080px'];
+        // area = ['100%', '1080px'];
         
          layer.open({
             type: type,

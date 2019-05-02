@@ -19,6 +19,11 @@ Route::get('test',function(){
 });
 
 
+//自动生成api文档
+Route::group(['prefix' => 'swagger'], function () {
+    Route::get('json', 'SwaggerController@getJSON');
+
+});
 
 Route::group(['prefix'=>'smart_data','namespace'=>'Smart'],function(){
 	//前端路由
@@ -26,13 +31,36 @@ Route::group(['prefix'=>'smart_data','namespace'=>'Smart'],function(){
 
 });
 
-
-
 //前端路由
 Route::get('/', function(){
 	return redirect('/smart');
 });
 
+/**
+ * 基础api
+ */
+Route::group(['prefix'=>'api','namespace'=>"Smart\API"],function(){
+
+	/**
+	 * 设备相关api
+	 */
+	Route::group(['prefix'=>'device'],function(){
+		//获取所有设备
+		Route::get('all','DeviceApiController@getAllDevices');
+		//获取指定区域内的设备
+		Route::get('get_region/{region_name}','DeviceApiController@getRegionDevices');
+	});
+
+	/**
+	 * 情景相关api
+	 */
+	Route::group(['prefix'=>'scene'],function(){
+		//获取所有情景
+		Route::get('all','SceneApiControlller@getSceneAll');
+		//获取指定区域的情景模式
+		Route::get('get/{region_name}','SceneApiControlller@getSceneByRegionName');
+	});
+});
 
 
 /**

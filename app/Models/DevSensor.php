@@ -45,7 +45,8 @@ class DevSensor extends Model
         'agt',
         'agt_state',
         'is_join',
-        'join_at'
+        'join_at',
+        'region_name'
     ];
 
     /**
@@ -74,7 +75,10 @@ class DevSensor extends Model
      * @var array
      */
     public static $rules = [
-        
+         'me' => 'required',
+        'model' => 'required',
+        'name' => 'required',
+        'agt' => 'required',
     ];
 
     

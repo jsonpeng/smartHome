@@ -30,6 +30,11 @@
     {
         $(obj).parent().submit();
     }
+    
+    function frameOpen(url,frameName)
+    {
+        $.zcjyFrameOpen(url,'智慧海淀'+frameName,['50%', '680px']);
+    }
 </script>
 @endsection
 

@@ -13,7 +13,7 @@
         <th>色温</th>
         <th>亮度</th>
         <th>智慧中心ID Agt</th>
-        <th>Agt State</th>
+        <th>智慧中心状态</th>
         <th>是否已接入</th>
         <th>接入时间</th>
             <th colspan="3">操作</th>
@@ -34,13 +34,13 @@
             <td>{!! $devLight->color_temp !!}</td>
             <td>{!! $devLight->bri !!}</td>
             <td>{!! $devLight->agt !!}</td>
-            <td>{!! $devLight->agt_state !!}</td>
+            <td>{!! Smart::getDisplayName($devLight->agt_state,'state') !!}</td>
             <td>{!! $devLight->IsJoinStatus !!}</td>
             <td>{!! $devLight->join_at !!}</td>
             <td>
                 {!! Form::open(['route' => ['devLights.destroy', $devLight->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('devLights.show', [$devLight->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                 <!--    <a href="{!! route('devLights.show', [$devLight->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a> -->
                     <a href="{!! route('devLights.edit', [$devLight->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                     {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('确定删除吗?')"]) !!}
                 </div>

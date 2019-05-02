@@ -1,8 +1,15 @@
-<!-- Me Field -->
+<?php $devices = \Smart::getCanUseDevices();?>
+
 <div class="form-group col-sm-6">
-    {!! Form::label('me', 'Me:') !!}
-    {!! Form::text('me', null, ['class' => 'form-control']) !!}
+    {!! Form::label('device', '请选择可用的设备:') !!}
+    <select class="form-control selectDevices">
+        @foreach($devices as $device)
+            <option value="{!! $device['me'] !!}" supportidx="{!! $device['supportIdx'] !!}" @if(isset($devCommand) && $devCommand->me == $device['me']) selected="selected" @endif>{!! $device['name'] !!}</option>
+        @endforeach
+    </select>
 </div>
+
+{!! Form::hidden('me', null, ['class' => 'form-control']) !!}
 
 <!-- Idx Field -->
 <div class="form-group col-sm-6">

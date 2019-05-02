@@ -26,7 +26,11 @@
 <!-- Agt Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('agt', '智慧中心ID Agt:') !!}
-    {!! Form::text('agt', getSettingValueByKey('agt'), ['class' => 'form-control']) !!}
+    @if(isset($devLight))
+         {!! Form::text('agt', null, ['class' => 'form-control']) !!}
+    @else
+        {!! Form::text('agt', getSettingValueByKey('agt'), ['class' => 'form-control']) !!}
+    @endif
 </div>
 
 <div class="form-group col-sm-6">
@@ -96,13 +100,10 @@
 
 <!-- Agt State Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('agt_state', 'Agt State:') !!}
+    {!! Form::label('agt_state', '智慧中心状态:') !!}
 
-    @if(isset($devLight))
-        {!! Form::text('agt_state', null, ['class' => 'form-control']) !!}
-    @else
-        {!! Form::text('agt_state', 1, ['class' => 'form-control']) !!}
-    @endif
+    <?php $arr = ['0'=>'离线','1'=>'上线'];?>
+    {!! Form::select('agt_state', $arr,null, ['class' => 'form-control']) !!}
 
 </div>
 

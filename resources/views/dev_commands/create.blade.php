@@ -22,3 +22,5 @@
         </div>
     </div>
 @endsection
+
+@include('dev_commands.js')
